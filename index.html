@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransferBA · Traslados al aeropuerto en Buenos Aires</title>
+  <meta name="description" content="Traslados privados desde y hacia Ezeiza (EZE) y Aeroparque (AEP). Reservá online, tarifa fija, chofer bilingüe y seguimiento de vuelo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">Transfer<span>BA</span></a>
+      <nav class="nav" id="nav">
+        <a href="#servicios" data-i18n="nav.services">Servicios</a>
+        <a href="#flota" data-i18n="nav.fleet">Flota</a>
+        <a href="#reservar" data-i18n="nav.book">Reservar</a>
+        <a href="#faq" data-i18n="nav.faq">Preguntas</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="header__actions">
+        <button class="lang" id="langToggle" aria-label="Cambiar idioma / Change language">EN</button>
+        <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Ezeiza · Aeroparque · CABA</p>
+          <h1 data-i18n="hero.title">Tu traslado al aeropuerto, sin sorpresas</h1>
+          <p class="lead" data-i18n="hero.lead">Choferes profesionales, tarifa fija y seguimiento de tu vuelo. Te esperamos con cartel en el hall de arribos.</p>
+          <div class="hero__cta">
+            <a href="#reservar" class="btn btn--primary" data-i18n="hero.cta">Reservar ahora</a>
+            <a href="#" class="btn btn--ghost js-whatsapp" data-i18n="hero.whatsapp">Escribinos por WhatsApp</a>
+          </div>
+          <ul class="badges">
+            <li data-i18n="hero.b1">✓ Disponible 24/7</li>
+            <li data-i18n="hero.b2">✓ Precio cerrado</li>
+            <li data-i18n="hero.b3">✓ Español / English</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2 class="section__title" data-i18n="services.title">Nuestros servicios</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon">🛬</div>
+            <h3 data-i18n="services.s1.t">Llegadas</h3>
+            <p data-i18n="services.s1.d">Te recibimos en Ezeiza o Aeroparque con tu nombre en un cartel. Si tu vuelo se demora, esperamos sin costo extra.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">🛫</div>
+            <h3 data-i18n="services.s2.t">Salidas</h3>
+            <p data-i18n="services.s2.d">Te buscamos en tu hotel, casa u oficina y te dejamos en el aeropuerto con tiempo de sobra.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">🏙️</div>
+            <h3 data-i18n="services.s3.t">Traslados en la ciudad</h3>
+            <p data-i18n="services.s3.d">Entre aeropuertos, terminal de cruceros, Buquebus o cualquier punto de CABA y GBA.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flota" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title" data-i18n="fleet.title">Nuestra flota</h2>
+        <div class="grid grid--3">
+          <article class="card card--fleet">
+            <div class="card__icon">🚗</div>
+            <h3 data-i18n="fleet.f1.t">Sedán</h3>
+            <p class="meta" data-i18n="fleet.f1.m">Hasta 3 pasajeros · 2 valijas grandes</p>
+            <p data-i18n="fleet.f1.d">Ideal para viajeros solos, parejas o viajes de negocios.</p>
+          </article>
+          <article class="card card--fleet">
+            <div class="card__icon">🚙</div>
+            <h3 data-i18n="fleet.f2.t">SUV / Minivan</h3>
+            <p class="meta" data-i18n="fleet.f2.m">Hasta 6 pasajeros · 5 valijas grandes</p>
+            <p data-i18n="fleet.f2.d">Más espacio para familias o grupos con mucho equipaje.</p>
+          </article>
+          <article class="card card--fleet">
+            <div class="card__icon">🚐</div>
+            <h3 data-i18n="fleet.f3.t">Van</h3>
+            <p class="meta" data-i18n="fleet.f3.m">Hasta 15 pasajeros · 12 valijas grandes</p>
+            <p data-i18n="fleet.f3.d">Para grupos, contingentes y eventos corporativos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservar" class="section">
+      <div class="container booking">
+        <div class="booking__intro">
+          <h2 class="section__title" data-i18n="book.title">Reservá tu traslado</h2>
+          <p data-i18n="book.lead">Completá el formulario y te confirmamos el precio por WhatsApp en minutos.</p>
+          <ol class="steps">
+            <li data-i18n="book.step1">Completá los datos de tu viaje</li>
+            <li data-i18n="book.step2">Te enviamos la cotización y confirmás</li>
+            <li data-i18n="book.step3">Tu chofer te espera el día del viaje</li>
+          </ol>
+        </div>
+
+        <form class="form" id="bookingForm" novalidate>
+          <fieldset class="form__group">
+            <legend data-i18n="form.type">Tipo de traslado</legend>
+            <div class="segmented">
+              <label><input type="radio" name="type" value="arrival" checked><span data-i18n="form.arrival">Llegada</span></label>
+              <label><input type="radio" name="type" value="departure"><span data-i18n="form.departure">Salida</span></label>
+              <label><input type="radio" name="type" value="city"><span data-i18n="form.city">Ciudad</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.from">Desde</span>
+              <input type="text" name="from" list="places" required>
+            </label>
+            <label class="field">
+              <span data-i18n="form.to">Hasta</span>
+              <input type="text" name="to" list="places" required>
+            </label>
+          </div>
+          <datalist id="places">
+            <option value="Aeropuerto Ezeiza (EZE)">
+            <option value="Aeroparque Jorge Newbery (AEP)">
+            <option value="Aeropuerto El Palomar (EPA)">
+            <option value="Terminal de Cruceros Benito Quinquela Martín">
+            <option value="Terminal Buquebus (Puerto Madero)">
+          </datalist>
+
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.date">Fecha</span>
+              <input type="date" name="date" required>
+            </label>
+            <label class="field">
+              <span data-i18n="form.time">Hora</span>
+              <input type="time" name="time" required>
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.passengers">Pasajeros</span>
+              <input type="number" name="passengers" min="1" max="15" value="1" required>
+            </label>
+            <label class="field">
+              <span data-i18n="form.luggage">Valijas</span>
+              <input type="number" name="luggage" min="0" max="20" value="1">
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.vehicle">Vehículo</span>
+              <select name="vehicle">
+                <option value="sedan" data-i18n="fleet.f1.t">Sedán</option>
+                <option value="suv" data-i18n="fleet.f2.t">SUV / Minivan</option>
+                <option value="van" data-i18n="fleet.f3.t">Van</option>
+              </select>
+            </label>
+            <label class="field" id="flightField">
+              <span data-i18n="form.flight">N° de vuelo</span>
+              <input type="text" name="flight" placeholder="AR1234">
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.name">Nombre y apellido</span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span data-i18n="form.phone">Teléfono / WhatsApp</span>
+              <input type="tel" name="phone" autocomplete="tel" required>
+            </label>
+          </div>
+
+          <label class="field">
+            <span data-i18n="form.notes">Comentarios (opcional)</span>
+            <textarea name="notes" rows="3" data-i18n-placeholder="form.notesPh" placeholder="Silla para bebé, paradas extra, etc."></textarea>
+          </label>
+
+          <p class="form__error" id="formError" role="alert" hidden></p>
+          <button type="submit" class="btn btn--primary btn--block" data-i18n="form.submit">Enviar reserva por WhatsApp</button>
+          <p class="form__note" data-i18n="form.note">Sin pago anticipado. Pagás al chofer en efectivo, transferencia o tarjeta.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--alt">
+      <div class="container container--narrow">
+        <h2 class="section__title" data-i18n="faq.title">Preguntas frecuentes</h2>
+        <details>
+          <summary data-i18n="faq.q1">¿Qué pasa si mi vuelo se atrasa?</summary>
+          <p data-i18n="faq.a1">Seguimos tu vuelo en tiempo real y ajustamos la hora de búsqueda. La espera por demoras del vuelo no tiene costo.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">¿Dónde me encuentra el chofer?</summary>
+          <p data-i18n="faq.a2">En el hall de arribos, a la salida de aduana, con un cartel con tu nombre.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">¿Cómo pago?</summary>
+          <p data-i18n="faq.a3">Podés pagar al chofer en pesos, dólares, transferencia o tarjeta. No pedimos pago por adelantado.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q4">¿Con cuánta anticipación tengo que reservar?</summary>
+          <p data-i18n="faq.a4">Recomendamos reservar al menos 24 horas antes, pero también tomamos reservas de último momento según disponibilidad.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q5">¿Puedo cancelar?</summary>
+          <p data-i18n="faq.a5">Sí, la cancelación es gratuita hasta 12 horas antes del traslado.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a href="#" class="logo logo--light">Transfer<span>BA</span></a>
+        <p data-i18n="footer.tag">Traslados privados en Buenos Aires.</p>
+      </div>
+      <ul class="footer__contact">
+        <li>WhatsApp: <a href="#" class="js-whatsapp js-phone"></a></li>
+        <li>Email: <a href="#" class="js-email"></a></li>
+      </ul>
+      <p class="footer__copy">© <span id="year"></span> TransferBA</p>
+    </div>
+  </footer>
+
+  <a href="#" class="wa-float js-whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8c1.9 1 4 1.6 6.2 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4C5.8 20 5.3 18 5.3 16 5.3 10.1 10.1 5.3 16 5.3S26.7 10.1 26.7 16 21.9 26.6 16 26.6zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.3-.3-.4-.7-.5z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
