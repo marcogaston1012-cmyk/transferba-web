@@ -9,6 +9,7 @@ const I18N = {
     "nav.services": "Servicios",
     "nav.fleet": "Flota",
     "nav.book": "Reservar",
+    "nav.business": "Empresas",
     "nav.faq": "Preguntas",
     "nav.contact": "Contacto",
     "hero.eyebrow": "Ezeiza · Aeroparque · CABA",
@@ -60,6 +61,31 @@ const I18N = {
     "form.submit": "Enviar reserva por WhatsApp",
     "form.note": "Sin pago anticipado. Pagás al chofer en efectivo, transferencia o tarjeta.",
     "form.error": "Completá los campos marcados para continuar.",
+    "biz.eyebrow": "Para empresas",
+    "biz.title": "Traslados corporativos",
+    "biz.lead": "Movemos a tu equipo, clientes y visitas con la misma puntualidad, todos los días. Una cuenta, un solo contacto y una factura a fin de mes.",
+    "biz.b1.t": "Cuenta corriente",
+    "biz.b1.d": "Sin pagos por viaje: facturación mensual con factura A o B.",
+    "biz.b2.t": "Ejecutivo asignado",
+    "biz.b2.d": "Un único contacto para reservas, cambios y urgencias, 24/7.",
+    "biz.b3.t": "Tarifas preferenciales",
+    "biz.b3.d": "Precios fijos por convenio según el volumen de viajes.",
+    "biz.b4.t": "Reportes de viajes",
+    "biz.b4.d": "Detalle mensual por pasajero y centro de costos.",
+    "biz.b5.t": "Eventos y grupos",
+    "biz.b5.d": "Logística para congresos, viajes de incentivo y comitivas.",
+    "biz.form.title": "Pedí una propuesta para tu empresa",
+    "biz.form.company": "Empresa",
+    "biz.form.cuit": "CUIT (opcional)",
+    "biz.form.contact": "Persona de contacto",
+    "biz.form.role": "Cargo (opcional)",
+    "biz.form.email": "Email",
+    "biz.form.volume": "Viajes estimados por mes",
+    "biz.form.volumeMax": "Más de 100",
+    "biz.form.message": "Contanos qué necesitás (opcional)",
+    "biz.form.messagePh": "Traslados de ejecutivos, visitas de clientes, un evento puntual...",
+    "biz.form.submit": "Solicitar propuesta por WhatsApp",
+    "biz.form.note": "¿Preferís email? Escribinos a",
     "faq.title": "Preguntas frecuentes",
     "faq.q1": "¿Qué pasa si mi vuelo se atrasa?",
     "faq.a1": "Seguimos tu vuelo en tiempo real y ajustamos la hora de búsqueda. La espera por demoras del vuelo no tiene costo.",
@@ -74,11 +100,13 @@ const I18N = {
     "footer.tag": "Traslados privados en Buenos Aires.",
     "wa.greeting": "Hola TransferBA, quiero consultar por un traslado.",
     "wa.booking": "Hola TransferBA, quiero reservar un traslado:",
+    "wa.business": "Hola TransferBA, quiero una propuesta de traslados para mi empresa:",
   },
   en: {
     "nav.services": "Services",
     "nav.fleet": "Fleet",
     "nav.book": "Book",
+    "nav.business": "Business",
     "nav.faq": "FAQ",
     "nav.contact": "Contact",
     "hero.eyebrow": "Ezeiza · Aeroparque · Buenos Aires",
@@ -130,6 +158,31 @@ const I18N = {
     "form.submit": "Send booking via WhatsApp",
     "form.note": "No prepayment. Pay your driver in cash, bank transfer or card.",
     "form.error": "Please fill in the highlighted fields to continue.",
+    "biz.eyebrow": "For companies",
+    "biz.title": "Corporate transfers",
+    "biz.lead": "We move your team, clients and visitors with the same punctuality, every day. One account, one point of contact and one invoice at the end of the month.",
+    "biz.b1.t": "Corporate account",
+    "biz.b1.d": "No per-trip payments: monthly billing with official invoices.",
+    "biz.b2.t": "Dedicated account manager",
+    "biz.b2.d": "A single contact for bookings, changes and emergencies, 24/7.",
+    "biz.b3.t": "Preferential rates",
+    "biz.b3.d": "Fixed contract prices based on your trip volume.",
+    "biz.b4.t": "Trip reports",
+    "biz.b4.d": "Monthly breakdown by passenger and cost center.",
+    "biz.b5.t": "Events and groups",
+    "biz.b5.d": "Logistics for conferences, incentive trips and delegations.",
+    "biz.form.title": "Request a proposal for your company",
+    "biz.form.company": "Company",
+    "biz.form.cuit": "Tax ID / CUIT (optional)",
+    "biz.form.contact": "Contact person",
+    "biz.form.role": "Job title (optional)",
+    "biz.form.email": "Email",
+    "biz.form.volume": "Estimated trips per month",
+    "biz.form.volumeMax": "More than 100",
+    "biz.form.message": "Tell us what you need (optional)",
+    "biz.form.messagePh": "Executive transfers, client visits, a one-off event...",
+    "biz.form.submit": "Request proposal via WhatsApp",
+    "biz.form.note": "Prefer email? Write to us at",
     "faq.title": "Frequently asked questions",
     "faq.q1": "What if my flight is delayed?",
     "faq.a1": "We track your flight in real time and adjust the pickup time. Waiting due to flight delays is free.",
@@ -144,6 +197,7 @@ const I18N = {
     "footer.tag": "Private transfers in Buenos Aires.",
     "wa.greeting": "Hi TransferBA, I'd like to ask about a transfer.",
     "wa.booking": "Hi TransferBA, I'd like to book a transfer:",
+    "wa.business": "Hi TransferBA, I'd like a transfer proposal for my company:",
   },
 };
 
@@ -184,10 +238,23 @@ function initialLanguage() {
   return navigator.language?.toLowerCase().startsWith("es") ? "es" : "en";
 }
 
+// Marca los campos obligatorios vacíos o inválidos y devuelve si el formulario está completo
+function validate(f) {
+  let valid = true;
+  f.querySelectorAll("[required]").forEach((input) => {
+    const ok = input.value.trim() !== "" && input.checkValidity();
+    input.closest(".field")?.classList.toggle("invalid", !ok);
+    if (!ok) valid = false;
+  });
+  const errorBox = f.querySelector(".form__error");
+  errorBox.textContent = valid ? "" : t("form.error");
+  errorBox.hidden = valid;
+  return valid;
+}
+
 // ===== Formulario de reserva =====
 const form = document.getElementById("bookingForm");
 const flightField = document.getElementById("flightField");
-const errorBox = document.getElementById("formError");
 
 function onTypeChange() {
   const type = form.type.value;
@@ -201,18 +268,7 @@ form.querySelectorAll('input[name="type"]').forEach((r) => r.addEventListener("c
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let valid = true;
-  form.querySelectorAll("[required]").forEach((input) => {
-    const ok = input.value.trim() !== "" && input.checkValidity();
-    input.closest(".field")?.classList.toggle("invalid", !ok);
-    if (!ok) valid = false;
-  });
-  if (!valid) {
-    errorBox.textContent = t("form.error");
-    errorBox.hidden = false;
-    return;
-  }
-  errorBox.hidden = true;
+  if (!validate(form)) return;
 
   const d = Object.fromEntries(new FormData(form));
   const typeLabel = t(`form.${d.type}`);
@@ -231,6 +287,27 @@ form.addEventListener("submit", (e) => {
   if (d.type !== "city" && d.flight) lines.push(`• ${t("form.flight")}: ${d.flight}`);
   lines.push(`• ${t("form.name")}: ${d.name}`, `• ${t("form.phone")}: ${d.phone}`);
   if (d.notes) lines.push(`• ${t("form.notes")}: ${d.notes}`);
+
+  window.open(waLink(lines.join("\n")), "_blank", "noopener");
+});
+
+// ===== Formulario de empresas =====
+const bizForm = document.getElementById("bizForm");
+bizForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (!validate(bizForm)) return;
+
+  const d = Object.fromEntries(new FormData(bizForm));
+  const lines = [
+    t("wa.business"),
+    "",
+    `• ${t("biz.form.company")}: ${d.company}`,
+  ];
+  if (d.cuit) lines.push(`• CUIT: ${d.cuit}`);
+  lines.push(`• ${t("biz.form.contact")}: ${d.contact}${d.role ? ` (${d.role})` : ""}`);
+  lines.push(`• ${t("biz.form.email")}: ${d.email}`, `• ${t("form.phone")}: ${d.phone}`);
+  lines.push(`• ${t("biz.form.volume")}: ${bizForm.volume.options[bizForm.volume.selectedIndex].textContent}`);
+  if (d.message) lines.push(`• ${d.message}`);
 
   window.open(waLink(lines.join("\n")), "_blank", "noopener");
 });

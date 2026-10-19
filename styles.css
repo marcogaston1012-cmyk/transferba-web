@@ -136,6 +136,19 @@ a { color: inherit; }
 .form__error { margin: 0; color: #c0392b; font-weight: 500; }
 .form__note { margin: 0; text-align: center; font-size: 0.88rem; color: var(--muted); }
 
+/* Empresas */
+.section--dark { background: var(--navy); color: #d3dbe6; }
+.section--dark .section__title { color: #fff; }
+.section--dark .booking__intro > p:not(.eyebrow) { color: #d3dbe6; }
+.section--dark .form { color: var(--text); }
+.section--dark .eyebrow { color: var(--accent); }
+.benefits { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
+.benefits li { padding-left: 32px; position: relative; display: grid; gap: 2px; }
+.benefits li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+.benefits strong { color: #fff; }
+.form__title { margin: 0; color: var(--navy); font-size: 1.2rem; }
+.form__note a { color: var(--navy); font-weight: 600; }
+
 /* FAQ */
 details { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; }
 summary { cursor: pointer; font-weight: 600; color: var(--navy); list-style: none; position: relative; padding-right: 28px; }

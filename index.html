@@ -18,6 +18,7 @@
         <a href="#servicios" data-i18n="nav.services">Servicios</a>
         <a href="#flota" data-i18n="nav.fleet">Flota</a>
         <a href="#reservar" data-i18n="nav.book">Reservar</a>
+        <a href="#empresas" data-i18n="nav.business">Empresas</a>
         <a href="#faq" data-i18n="nav.faq">Preguntas</a>
         <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
@@ -195,6 +196,88 @@
           <p class="form__error" id="formError" role="alert" hidden></p>
           <button type="submit" class="btn btn--primary btn--block" data-i18n="form.submit">Enviar reserva por WhatsApp</button>
           <p class="form__note" data-i18n="form.note">Sin pago anticipado. Pagás al chofer en efectivo, transferencia o tarjeta.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="empresas" class="section section--dark">
+      <div class="container booking">
+        <div class="booking__intro">
+          <p class="eyebrow" data-i18n="biz.eyebrow">Para empresas</p>
+          <h2 class="section__title" data-i18n="biz.title">Traslados corporativos</h2>
+          <p data-i18n="biz.lead">Movemos a tu equipo, clientes y visitas con la misma puntualidad, todos los días. Una cuenta, un solo contacto y una factura a fin de mes.</p>
+          <ul class="benefits">
+            <li>
+              <strong data-i18n="biz.b1.t">Cuenta corriente</strong>
+              <span data-i18n="biz.b1.d">Sin pagos por viaje: facturación mensual con factura A o B.</span>
+            </li>
+            <li>
+              <strong data-i18n="biz.b2.t">Ejecutivo asignado</strong>
+              <span data-i18n="biz.b2.d">Un único contacto para reservas, cambios y urgencias, 24/7.</span>
+            </li>
+            <li>
+              <strong data-i18n="biz.b3.t">Tarifas preferenciales</strong>
+              <span data-i18n="biz.b3.d">Precios fijos por convenio según el volumen de viajes.</span>
+            </li>
+            <li>
+              <strong data-i18n="biz.b4.t">Reportes de viajes</strong>
+              <span data-i18n="biz.b4.d">Detalle mensual por pasajero y centro de costos.</span>
+            </li>
+            <li>
+              <strong data-i18n="biz.b5.t">Eventos y grupos</strong>
+              <span data-i18n="biz.b5.d">Logística para congresos, viajes de incentivo y comitivas.</span>
+            </li>
+          </ul>
+        </div>
+
+        <form class="form" id="bizForm" novalidate>
+          <h3 class="form__title" data-i18n="biz.form.title">Pedí una propuesta para tu empresa</h3>
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="biz.form.company">Empresa</span>
+              <input type="text" name="company" autocomplete="organization" required>
+            </label>
+            <label class="field">
+              <span data-i18n="biz.form.cuit">CUIT (opcional)</span>
+              <input type="text" name="cuit" inputmode="numeric">
+            </label>
+          </div>
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="biz.form.contact">Persona de contacto</span>
+              <input type="text" name="contact" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span data-i18n="biz.form.role">Cargo (opcional)</span>
+              <input type="text" name="role" autocomplete="organization-title">
+            </label>
+          </div>
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="biz.form.email">Email</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label class="field">
+              <span data-i18n="form.phone">Teléfono / WhatsApp</span>
+              <input type="tel" name="phone" autocomplete="tel" required>
+            </label>
+          </div>
+          <label class="field">
+            <span data-i18n="biz.form.volume">Viajes estimados por mes</span>
+            <select name="volume">
+              <option value="1-10">1–10</option>
+              <option value="11-30">11–30</option>
+              <option value="31-100">31–100</option>
+              <option value="100+" data-i18n="biz.form.volumeMax">Más de 100</option>
+            </select>
+          </label>
+          <label class="field">
+            <span data-i18n="biz.form.message">Contanos qué necesitás (opcional)</span>
+            <textarea name="message" rows="3" data-i18n-placeholder="biz.form.messagePh" placeholder="Traslados de ejecutivos, visitas de clientes, un evento puntual..."></textarea>
+          </label>
+          <p class="form__error" role="alert" hidden></p>
+          <button type="submit" class="btn btn--primary btn--block" data-i18n="biz.form.submit">Solicitar propuesta por WhatsApp</button>
+          <p class="form__note"><span data-i18n="biz.form.note">¿Preferís email? Escribinos a</span> <a href="#" class="js-email"></a></p>
         </form>
       </div>
     </section>
