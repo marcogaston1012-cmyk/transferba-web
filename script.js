@@ -2,7 +2,7 @@
 const CONFIG = {
   whatsapp: "5491178281990", // formato internacional, sin "+" ni espacios
   whatsappDisplay: "+54 9 11 7828-1990",
-  email: "reservas@transferba.com",
+  email: "transferprivateba@gmail.com",
 };
 
 const I18N = {
