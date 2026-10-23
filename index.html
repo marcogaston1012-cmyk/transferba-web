@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TransferBA · Traslados al aeropuerto en Buenos Aires</title>
   <meta name="description" content="Traslados privados desde y hacia Ezeiza (EZE) y Aeroparque (AEP). Reservá online, tarifa fija, chofer bilingüe y seguimiento de vuelo.">
+  <meta name="theme-color" content="#101114">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TransferBA · Traslados al aeropuerto en Buenos Aires">
+  <meta property="og:description" content="Traslados privados desde y hacia Ezeiza y Aeroparque. Tarifa cerrada, chofer profesional y seguimiento de vuelo.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&h=630&q=70">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale:alternate" content="en_US">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101114'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23c6a15b' text-anchor='middle'%3EBA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
+  <a href="#reservar" class="skip-link" data-i18n="nav.skip">Ir a reservar</a>
+  <header class="header" id="header">
     <div class="container header__inner">
       <a href="#" class="logo">Transfer<span>BA</span></a>
       <nav class="nav" id="nav">
@@ -47,6 +56,62 @@
             <li data-i18n="hero.b2">Precio cerrado</li>
             <li data-i18n="hero.b3">Español / English</li>
           </ul>
+        </div>
+
+        <form class="quote" id="quoteForm">
+          <p class="quote__title" data-i18n="quote.title">Cotizá tu viaje</p>
+          <label class="field">
+            <span data-i18n="form.from">Desde</span>
+            <input type="text" name="from" list="places" value="Aeropuerto Ezeiza (EZE)">
+          </label>
+          <label class="field">
+            <span data-i18n="form.to">Hasta</span>
+            <input type="text" name="to" list="places" data-i18n-placeholder="quote.toPh" placeholder="Hotel, dirección o barrio">
+          </label>
+          <div class="form__row">
+            <label class="field">
+              <span data-i18n="form.date">Fecha</span>
+              <input type="date" name="date">
+            </label>
+            <label class="field">
+              <span data-i18n="form.passengers">Pasajeros</span>
+              <input type="number" name="passengers" min="1" max="15" value="1">
+            </label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block" data-i18n="quote.submit">Continuar reserva</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="why" aria-label="Por qué elegirnos">
+      <div class="container why__grid">
+        <div class="why__item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 19h19M5.2 14.6l12.6-3.4c1.2-.3 2.1-1.4 1.8-2.4-.3-1-1.6-1.4-2.8-1.1l-3.6 1L7.4 4.6l-2 .5 3.6 5.2-3.4.9-2-1.5-1.4.4 1.8 3.4c.3.7 1 1.2 1.2 1.1z"/></svg>
+          <div>
+            <strong data-i18n="why.w1.t">Seguimiento de vuelo</strong>
+            <span data-i18n="why.w1.d">Ajustamos la búsqueda a la hora real de aterrizaje.</span>
+          </div>
+        </div>
+        <div class="why__item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <div>
+            <strong data-i18n="why.w2.t">Choferes profesionales</strong>
+            <span data-i18n="why.w2.d">Puntuales, discretos y bilingües.</span>
+          </div>
+        </div>
+        <div class="why__item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div>
+            <strong data-i18n="why.w3.t">Tarifa cerrada</strong>
+            <span data-i18n="why.w3.d">Sabés el precio antes de viajar. Sin recargos.</span>
+          </div>
+        </div>
+        <div class="why__item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div>
+            <strong data-i18n="why.w4.t">Atención 24/7</strong>
+            <span data-i18n="why.w4.d">Reservas y asistencia todos los días del año.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -307,15 +372,40 @@
   </main>
 
   <footer id="contacto" class="footer">
-    <div class="container footer__inner">
-      <div>
+    <div class="container footer__grid">
+      <div class="footer__brand">
         <a href="#" class="logo logo--light">Transfer<span>BA</span></a>
         <p data-i18n="footer.tag">Traslados privados en Buenos Aires.</p>
+        <a href="#reservar" class="btn btn--primary btn--small" data-i18n="hero.cta">Reservar ahora</a>
       </div>
-      <ul class="footer__contact">
-        <li>WhatsApp: <a href="#" class="js-whatsapp js-phone"></a></li>
-        <li>Email: <a href="#" class="js-email"></a></li>
-      </ul>
+      <div>
+        <h4 data-i18n="footer.nav">Navegación</h4>
+        <ul class="footer__list">
+          <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+          <li><a href="#flota" data-i18n="nav.fleet">Flota</a></li>
+          <li><a href="#empresas" data-i18n="nav.business">Empresas</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.coverage">Cobertura</h4>
+        <ul class="footer__list">
+          <li>Ezeiza (EZE)</li>
+          <li>Aeroparque (AEP)</li>
+          <li data-i18n="footer.cov3">CABA y Gran Buenos Aires</li>
+          <li data-i18n="footer.cov4">Puerto y terminales</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="nav.contact">Contacto</h4>
+        <ul class="footer__list">
+          <li>WhatsApp: <a href="#" class="js-whatsapp js-phone"></a></li>
+          <li>Email: <a href="#" class="js-email"></a></li>
+          <li data-i18n="footer.hours">Atención 24 horas, todos los días</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
       <p class="footer__copy">© <span id="year"></span> TransferBA</p>
     </div>
   </footer>

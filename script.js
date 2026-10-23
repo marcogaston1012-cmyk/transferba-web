@@ -98,6 +98,23 @@ const I18N = {
     "faq.q5": "¿Puedo cancelar?",
     "faq.a5": "Sí, la cancelación es gratuita hasta 12 horas antes del traslado.",
     "footer.tag": "Traslados privados en Buenos Aires.",
+    "nav.skip": "Ir a reservar",
+    "quote.title": "Cotizá tu viaje",
+    "quote.toPh": "Hotel, dirección o barrio",
+    "quote.submit": "Continuar reserva",
+    "why.w1.t": "Seguimiento de vuelo",
+    "why.w1.d": "Ajustamos la búsqueda a la hora real de aterrizaje.",
+    "why.w2.t": "Choferes profesionales",
+    "why.w2.d": "Puntuales, discretos y bilingües.",
+    "why.w3.t": "Tarifa cerrada",
+    "why.w3.d": "Sabés el precio antes de viajar. Sin recargos.",
+    "why.w4.t": "Atención 24/7",
+    "why.w4.d": "Reservas y asistencia todos los días del año.",
+    "footer.nav": "Navegación",
+    "footer.coverage": "Cobertura",
+    "footer.cov3": "CABA y Gran Buenos Aires",
+    "footer.cov4": "Puerto y terminales",
+    "footer.hours": "Atención 24 horas, todos los días",
     "wa.greeting": "Hola TransferBA, quiero consultar por un traslado.",
     "wa.booking": "Hola TransferBA, quiero reservar un traslado:",
     "wa.business": "Hola TransferBA, quiero una propuesta de traslados para mi empresa:",
@@ -195,6 +212,23 @@ const I18N = {
     "faq.q5": "Can I cancel?",
     "faq.a5": "Yes, cancellation is free up to 12 hours before the transfer.",
     "footer.tag": "Private transfers in Buenos Aires.",
+    "nav.skip": "Skip to booking",
+    "quote.title": "Get a quote",
+    "quote.toPh": "Hotel, address or neighborhood",
+    "quote.submit": "Continue booking",
+    "why.w1.t": "Flight tracking",
+    "why.w1.d": "We adjust pickup to your actual landing time.",
+    "why.w2.t": "Professional drivers",
+    "why.w2.d": "Punctual, discreet and bilingual.",
+    "why.w3.t": "Fixed rate",
+    "why.w3.d": "Know your price before you travel. No surcharges.",
+    "why.w4.t": "24/7 service",
+    "why.w4.d": "Bookings and assistance every day of the year.",
+    "footer.nav": "Navigation",
+    "footer.coverage": "Coverage",
+    "footer.cov3": "Buenos Aires City & Greater BA",
+    "footer.cov4": "Port and terminals",
+    "footer.hours": "Open 24 hours, every day",
     "wa.greeting": "Hi TransferBA, I'd like to ask about a transfer.",
     "wa.booking": "Hi TransferBA, I'd like to book a transfer:",
     "wa.business": "Hi TransferBA, I'd like a transfer proposal for my company:",
@@ -312,19 +346,70 @@ bizForm.addEventListener("submit", (e) => {
   window.open(waLink(lines.join("\n")), "_blank", "noopener");
 });
 
+// ===== Cotizador rápido de la portada: completa el formulario de reserva =====
+const quoteForm = document.getElementById("quoteForm");
+const AIRPORT = /aeropuerto|aeroparque|airport|\b(EZE|AEP|EPA)\b/i;
+
+quoteForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const q = Object.fromEntries(new FormData(quoteForm));
+  const type = AIRPORT.test(q.from) ? "arrival" : AIRPORT.test(q.to) ? "departure" : "city";
+  form.querySelector(`input[name="type"][value="${type}"]`).checked = true;
+  form.from.value = q.from;
+  form.to.value = q.to;
+  form.date.value = q.date;
+  form.passengers.value = q.passengers || 1;
+  const pax = Number(form.passengers.value);
+  form.vehicle.value = pax > 6 ? "van" : pax > 3 ? "suv" : "sedan";
+  onTypeChange();
+
+  document.getElementById("reservar").scrollIntoView({ behavior: "smooth" });
+  const firstEmpty = [...form.querySelectorAll("[required]")].find((i) => !i.value.trim());
+  firstEmpty?.focus({ preventScroll: true });
+});
+
 // No permitir fechas pasadas
 const today = new Date();
 today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
-form.date.min = today.toISOString().split("T")[0];
+form.date.min = quoteForm.date.min = today.toISOString().split("T")[0];
+
+// ===== Header: sólido al hacer scroll o con el menú abierto =====
+const header = document.getElementById("header");
+const nav = document.getElementById("nav");
+function updateHeader() {
+  header.classList.toggle("header--solid", window.scrollY > 40 || nav.classList.contains("open"));
+}
+window.addEventListener("scroll", updateHeader, { passive: true });
+updateHeader();
 
 // ===== Menú móvil =====
 const menuBtn = document.getElementById("menuBtn");
-const nav = document.getElementById("nav");
 menuBtn.addEventListener("click", () => {
   const open = nav.classList.toggle("open");
   menuBtn.setAttribute("aria-expanded", open);
+  updateHeader();
 });
-nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => nav.classList.remove("open")));
+nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+  nav.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded", false);
+  updateHeader();
+}));
+
+// ===== Aparición suave de secciones =====
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".section__title, .card, .booking__intro, .form, details, .why__item").forEach((el) => {
+    el.classList.add("reveal");
+    observer.observe(el);
+  });
+}
 
 // ===== Contacto =====
 document.querySelectorAll(".js-phone").forEach((a) => (a.textContent = "+" + CONFIG.whatsapp));
