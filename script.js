@@ -1,6 +1,7 @@
 // ===== Configuración: reemplazá estos datos por los reales =====
 const CONFIG = {
-  whatsapp: "5491100000000", // formato internacional, sin "+" ni espacios
+  whatsapp: "5491178281990", // formato internacional, sin "+" ni espacios
+  whatsappDisplay: "+54 9 11 7828-1990",
   email: "reservas@transferba.com",
 };
 
@@ -412,7 +413,7 @@ if ("IntersectionObserver" in window) {
 }
 
 // ===== Contacto =====
-document.querySelectorAll(".js-phone").forEach((a) => (a.textContent = "+" + CONFIG.whatsapp));
+document.querySelectorAll(".js-phone").forEach((a) => (a.textContent = CONFIG.whatsappDisplay));
 document.querySelectorAll(".js-email").forEach((a) => {
   a.textContent = CONFIG.email;
   a.href = `mailto:${CONFIG.email}`;
