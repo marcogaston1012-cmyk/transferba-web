@@ -28,6 +28,8 @@ const I18N = {
     "services.s2.d": "Te buscamos en tu hotel, casa u oficina y te dejamos en el aeropuerto con tiempo de sobra.",
     "services.s3.t": "Traslados en la ciudad",
     "services.s3.d": "Entre aeropuertos, terminal de cruceros, Buquebus o cualquier punto de CABA y GBA.",
+    "services.s4.t": "Viajes de larga distancia",
+    "services.s4.d": "Viajes a la Costa Atlántica, el interior o a otras provincias, con el mismo confort y una tarifa a medida.",
     "fleet.title": "Nuestra flota",
     "fleet.f1.t": "Sedán",
     "fleet.f1.m": "Hasta 3 pasajeros · 2 valijas grandes",
@@ -47,6 +49,7 @@ const I18N = {
     "form.arrival": "Llegada",
     "form.departure": "Salida",
     "form.city": "Ciudad",
+    "form.long": "Larga distancia",
     "form.from": "Desde",
     "form.to": "Hasta",
     "form.date": "Fecha",
@@ -115,6 +118,7 @@ const I18N = {
     "footer.coverage": "Cobertura",
     "footer.cov3": "CABA y Gran Buenos Aires",
     "footer.cov4": "Puerto y terminales",
+    "footer.cov5": "Viajes de larga distancia",
     "footer.hours": "Atención 24 horas, todos los días",
     "wa.greeting": "Hola TransferBA, quiero consultar por un traslado.",
     "wa.booking": "Hola TransferBA, quiero reservar un traslado:",
@@ -142,6 +146,8 @@ const I18N = {
     "services.s2.d": "We pick you up at your hotel, home or office and get you to the airport with plenty of time.",
     "services.s3.t": "City transfers",
     "services.s3.d": "Between airports, the cruise terminal, Buquebus ferry or anywhere in Buenos Aires.",
+    "services.s4.t": "Long-distance trips",
+    "services.s4.d": "Trips to the Atlantic coast, the countryside or other provinces, with the same comfort and a tailored rate.",
     "fleet.title": "Our fleet",
     "fleet.f1.t": "Sedan",
     "fleet.f1.m": "Up to 3 passengers · 2 large suitcases",
@@ -161,6 +167,7 @@ const I18N = {
     "form.arrival": "Arrival",
     "form.departure": "Departure",
     "form.city": "City",
+    "form.long": "Long distance",
     "form.from": "From",
     "form.to": "To",
     "form.date": "Date",
@@ -229,6 +236,7 @@ const I18N = {
     "footer.coverage": "Coverage",
     "footer.cov3": "Buenos Aires City & Greater BA",
     "footer.cov4": "Port and terminals",
+    "footer.cov5": "Long-distance trips",
     "footer.hours": "Open 24 hours, every day",
     "wa.greeting": "Hi TransferBA, I'd like to ask about a transfer.",
     "wa.booking": "Hi TransferBA, I'd like to book a transfer:",
@@ -293,7 +301,7 @@ const flightField = document.getElementById("flightField");
 
 function onTypeChange() {
   const type = form.type.value;
-  flightField.hidden = type === "city";
+  flightField.hidden = type === "city" || type === "long";
   // Sugerir aeropuerto según el tipo de traslado
   if (type === "arrival" && !form.from.value) form.from.value = EZE;
   if (type === "departure" && !form.to.value) form.to.value = EZE;
@@ -319,7 +327,7 @@ form.addEventListener("submit", (e) => {
     `• ${t("form.luggage")}: ${d.luggage}`,
     `• ${t("form.vehicle")}: ${vehicleLabel}`,
   ];
-  if (d.type !== "city" && d.flight) lines.push(`• ${t("form.flight")}: ${d.flight}`);
+  if (!flightField.hidden && d.flight) lines.push(`• ${t("form.flight")}: ${d.flight}`);
   lines.push(`• ${t("form.name")}: ${d.name}`, `• ${t("form.phone")}: ${d.phone}`);
   if (d.notes) lines.push(`• ${t("form.notes")}: ${d.notes}`);
 
